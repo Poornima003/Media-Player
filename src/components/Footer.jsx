@@ -34,7 +34,7 @@ function Footer() {
                 <Link style={{textDecoration:'none',color:'white'}} to={'/'}><i className="fa-solid fa-envelope"></i></Link>
                 <Link style={{textDecoration:'none',color:'white'}} to={'/home'}><i className="fa-brands fa-linkedin"></i></Link>
                 <Link style={{textDecoration:'none',color:'white'}} to={'/watch-history'}><i className="fa-brands fa-twitter"></i></Link>
-                <Link style={{textDecoration:'none',color:'white'}} to={'/watch-history'}><i class="fa-brands fa-instagram"></i></Link>
+                <Link style={{textDecoration:'none',color:'white'}} to={'/watch-history'}><i className="fa-brands fa-instagram"></i></Link>
                 </div>
             </div>
         </div>
