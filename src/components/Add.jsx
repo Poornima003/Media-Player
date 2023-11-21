@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { uploadVideo } from '../services/allAPI';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Add({setUploadVideoServerResponse}) {
@@ -28,23 +30,28 @@ function Add({setUploadVideoServerResponse}) {
   const handleUpload = async ()=>{
     const {id,caption,url,embedLink} = video
     if(!id || !caption || !url || !embedLink){
-      alert("Please fill form completely")
+      toast.warning("Please fill form completely")
     }else{
       //make api call
      const response= await uploadVideo(video)
     // console.log(response);
      if(response.status>=200 && response.status<300){
-        //set server response
-      setUploadVideoServerResponse(response.data)
+        
+     
       //modal close
+     
+      toast.success(`'${response.data.caption}' video uploaded successfully`)
+      //set server response
+      setUploadVideoServerResponse(response.data)
+      //reset video
+      setVideo({id:'',caption:'',url:'',embedLink:''})
+
       handleClose()
-      alert(`'${response.data.caption}' video uploaded successfully`)
-      
      }else{
       //console.log(response);
       
 
-      alert("please provide unique id")
+      toast.error("Cannot perform the operation now. Please try after some time..")
      }
     }
      
@@ -89,9 +96,15 @@ function Add({setUploadVideoServerResponse}) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
+          
           <Button onClick={handleUpload} className="btn btn-info" >Upload</Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer 
+      position='top-center'
+      autoClose={2000}
+      theme='colored'
+      />
     </>
   )
 }

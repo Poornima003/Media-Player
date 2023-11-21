@@ -5,14 +5,16 @@ import { getAllVideos } from '../services/allAPI'
 
 function View({uploadVideoServerResponse}) {
   const [allVideos,setAllVideos] = useState([])
+  const [deleteVideoStatus,setDeleteVideoStatus]= useState(false)
   const getAllUploadedVideos = async ()=>{
     const {data} = await getAllVideos()
     setAllVideos(data);
   }
   useEffect(()=>{
     getAllUploadedVideos()
-  },[uploadVideoServerResponse])
- // console.log(allVideos);
+    setDeleteVideoStatus(false)
+  },[uploadVideoServerResponse,deleteVideoStatus])
+
   return (
     <>
     
@@ -21,7 +23,7 @@ function View({uploadVideoServerResponse}) {
         allVideos.length>0?
         allVideos.map(video=>(
           <Col sm={12} md={6} lg={4} xl={3}>
-        <VideoCard displayData={video}/>
+        <VideoCard displayData={video} setDeleteVideoStatus={setDeleteVideoStatus}/>
       </Col>
         ))
         :

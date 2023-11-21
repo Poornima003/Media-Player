@@ -24,3 +24,29 @@ export const deleteAVideo = async (id)=>{
     //make delete http request to  http://localhost:4000/vidoes to remove a video from json server and return response to view component
     return await commonAPI("DELETE",`${serverURL}/videos/${id}`,{})
 }
+
+export const addToHistory = async (videoDetails)=>{
+    return await commonAPI("POST",`${serverURL}/history`,videoDetails)
+
+}
+
+export const getAllHistory = async ()=>{
+    return await commonAPI("GET",`${serverURL}/history`,"")
+
+}
+
+export const addCategory = async (reqBody)=>{
+    return await commonAPI("POST",`${serverURL}/categories`,reqBody)
+}
+
+export const getAllCategory = async ()=>{
+    return await commonAPI("GET",`${serverURL}/categories`,"")
+}
+
+export const deleteCategory = async (id)=>{
+    return await commonAPI("DELETE",`${serverURL}/categories/${id}`,{})
+}
+
+export const updateCategory = async (id,body)=>{
+    return await commonAPI("PUT",`${serverURL}/categories/${id}`,body)
+}
