@@ -35,6 +35,11 @@ export const getAllHistory = async ()=>{
 
 }
 
+export const deleteHistory = async (id)=>{
+    return await commonAPI("DELETE",`${serverURL}/history/${id}`,{})
+
+}
+
 export const addCategory = async (reqBody)=>{
     return await commonAPI("POST",`${serverURL}/categories`,reqBody)
 }

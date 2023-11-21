@@ -83,7 +83,7 @@ function Category() {
               item?.allVideos &&
               item?.allVideos.map(card=>(
                 <Col sm={12}>
-                  <VideoCard displayData={card}/>
+                  <VideoCard displayData={card} insideCategory={true}/>
                 </Col>
               ))
             }
